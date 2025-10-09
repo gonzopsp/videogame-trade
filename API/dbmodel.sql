@@ -64,8 +64,12 @@ INSERT INTO users(email,name,password,role) VALUES('admin','admin','admin',2);
 
 
 
-INSERT INTO videogames(genre_id,name,price) VALUES(1,'Overcooked 2',10000);
-INSERT INTO videogames(genre_id,name,description,price) VALUES(0,'The Last of Us™ Part I','Descubre el galardonado juego que inspiró la aclamada serie de televisión. Guía a Joel y Ellie en su travesía por una América posapocalíptica y encuentra aliados y enemigos inolvidables en The Last of Us™. ',50000);
+INSERT INTO videogames(genre_id,name,description,price) VALUES(2,'Overcooked 2',"¡Overcooked vuelve con un nuevo y caótico juego de cocina en acción! Regresa al Reino de la Cebolla y organiza tu equipo de chefs en un cooperativo clásico o en partidas en línea de hasta cuatro jugadores. Agarraos los delantales... es hora de salvar el mundo (¡otra vez!)",10000);
+INSERT INTO videogames(genre_id,name,description,price) VALUES(1,'The Last of Us™ Part I','Descubre el galardonado juego que inspiró la aclamada serie de televisión. Guía a Joel y Ellie en su travesía por una América posapocalíptica y encuentra aliados y enemigos inolvidables en The Last of Us™.',50000);
+
+INSERT INTO videogames(genre_id,name,description,price) VALUES(4,"Sid Meier’s Civilization® VI","Expande tu imperio, haz avanzar tu cultura y enfréntate a los mejores líderes de la historia. ¿Podrá tu civilización superar la prueba del tiempo? ",44990);
+INSERT INTO videogames(genre_id,name,description,price) VALUES(1,"Red Dead Redemption 2","Arthur Morgan y la banda de Van der Linde se ven obligados a huir. Con agentes federales y cazarrecompensas pisándoles los talones, la banda deberá atracar, robar y luchar para sobrevivir en su camino por el escabroso territorio.",53990);
+INSERT INTO videogames(genre_id,name,description,price) VALUES(3,"Battlefield™ 6","La experiencia bélica definitiva. En una guerra de tanques, cazas y gigantescos arsenales de combate, el arma más mortífera es tu patrulla.",62990);
 
 
 
