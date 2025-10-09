@@ -73,3 +73,15 @@ INSERT INTO videogames(genre_id,name,description,price) VALUES(3,"Battlefield™
 
 
 
+
+INSERT INTO videogame_images(videogame_id, image_path) VALUES(1,"data/img/overcooked2-header.jpg");
+INSERT INTO videogame_images(videogame_id, image_path) VALUES(1,"data/img/overcooked2-img-1.jpg");
+INSERT INTO videogame_images(videogame_id, image_path) VALUES(2,"data/img/tlou-p1-header.jpg");
+INSERT INTO videogame_images(videogame_id, image_path) VALUES(2,"data/img/tlou-p1-img-1.jpg");
+INSERT INTO videogame_images(videogame_id, image_path) VALUES(3,"data/img/civ6-header.jpg");
+
+INSERT INTO videogame_images(videogame_id, image_path) VALUES(3,"data/img/civ6-img1.jpg");
+INSERT INTO videogame_images(videogame_id, image_path) VALUES(4,"data/img/rdr2-header.jpg");
+INSERT INTO videogame_images(videogame_id, image_path) VALUES(4,"data/img/rdr2-img1.jpg");
+INSERT INTO videogame_images(videogame_id, image_path) VALUES(5,"data/img/battlefield6-header.jpg");
+INSERT INTO videogame_images(videogame_id, image_path) VALUES(5,"data/img/battlefield6-img1.jpg");
