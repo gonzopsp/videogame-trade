@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:videotrade_app/ui/bottom_navbar.dart';
+import 'package:videotrade_app/ui/pages/tienda_tab.dart';
 
 
 class MainPage extends StatefulWidget {
@@ -13,7 +14,7 @@ class _MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = const [
-  Center(child: Text("Home")),
+  TiendaTab(),
   Center(child: Text("Community")),
   Center(child: Text("Perfil")),
   Center(child: Text("Configuración")),

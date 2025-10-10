@@ -27,10 +27,10 @@ class _BottomNavbarState extends State<BottomNavbar> {
       selectedItemColor: Colors.lightBlueAccent,
       unselectedItemColor: Colors.white70, 
       items: [
-        BottomNavigationBarItem(icon: Icon(Icons.home, color: Colors.lightBlueAccent,),label: 'Home', ), 
-        BottomNavigationBarItem(icon: Icon(Icons.people, color: Colors.lightBlueAccent,), label: 'Community'),
+        BottomNavigationBarItem(icon: Icon(Icons.home, color: Colors.lightBlueAccent,),label: 'Tienda', ), 
+        BottomNavigationBarItem(icon: Icon(Icons.people, color: Colors.lightBlueAccent,), label: 'Comunidad'),
         BottomNavigationBarItem(icon: Icon(Icons.person, color: Colors.lightBlueAccent,), label: 'Perfil'),
-        BottomNavigationBarItem(icon: Icon(Icons.more_horiz_outlined, color: Colors.lightBlueAccent,), label: 'Configuracion')
+        BottomNavigationBarItem(icon: Icon(Icons.more_horiz_outlined, color: Colors.lightBlueAccent,), label: 'Configuración')
         
 
     ],
