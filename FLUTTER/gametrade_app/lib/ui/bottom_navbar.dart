@@ -29,8 +29,8 @@ class _BottomNavbarState extends State<BottomNavbar> {
       items: [
         BottomNavigationBarItem(icon: Icon(Icons.home, color: Colors.lightBlueAccent,),label: 'Tienda', ), 
         BottomNavigationBarItem(icon: Icon(Icons.people, color: Colors.lightBlueAccent,), label: 'Comunidad'),
-        BottomNavigationBarItem(icon: Icon(Icons.person, color: Colors.lightBlueAccent,), label: 'Perfil'),
-        BottomNavigationBarItem(icon: Icon(Icons.more_horiz_outlined, color: Colors.lightBlueAccent,), label: 'Configuración')
+        BottomNavigationBarItem(icon: Icon(Icons.library_books_outlined, color: Colors.lightBlueAccent,), label: 'Biblioteca'),
+        BottomNavigationBarItem(icon: Icon(Icons.person, color: Colors.lightBlueAccent,), label: 'Perfil')
         
 
     ],

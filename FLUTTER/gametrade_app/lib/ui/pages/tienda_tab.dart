@@ -1,5 +1,8 @@
+import 'package:provider/provider.dart';
 import 'package:videotrade_app/models/videogame.dart';
+import 'package:videotrade_app/ui/pages/carrito_page.dart';
 import 'package:videotrade_app/ui/widget/game_card.dart';
+import 'package:videotrade_app/models/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -48,16 +51,51 @@ class _TiendaTabState extends State<TiendaTab> {
           return Center(child: Text('No hay videojuegos disponibles'));
         } else{
           final videojuegos = snapshot.data!;
-          return ListView.builder(
-            itemCount: videojuegos.length,
-            itemBuilder: (context, index){
-              final juego = videojuegos[index];
-
-              return GameCard(
-                title: juego.nombre , 
-                imageUrl: juego.images.first, 
-                price: juego.precio);
-            });
+          return Scaffold(
+            appBar: AppBar(
+              leading: Icon(Icons.account_circle),
+              title: Text('TIENDA JUEGOS BKN'),
+              actions: [
+                Row(
+                  spacing: 20,
+                  children: [
+                    Icon(Icons.notifications_none_outlined),
+                    Icon(Icons.settings)
+                  ],
+                ),
+                
+              ],
+              ),
+            body: 
+              ListView.builder(
+                itemCount: videojuegos.length,
+                itemBuilder: (context, index){
+                  final juego = videojuegos[index];
+              
+                  return GameCard(
+                    id: juego.id,
+                    title: juego.nombre , 
+                    imageUrl: juego.images.first, 
+                    price: juego.precio,
+              
+                    
+                    );
+                }),
+                floatingActionButton: FloatingActionButton.extended(
+                  backgroundColor: Colors.blueGrey.shade800,
+                  foregroundColor: Colors.lightBlueAccent,
+                  elevation: 6,
+                  icon: const Icon(Icons.shopping_cart),
+                  label: Consumer<CartModel>(builder: (context, cart, child){
+                    return Text('Carrito (${cart.itemCount})', style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,),);
+                  },),
+                  onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (_) => const CarritoPage()));
+                  }),
+            
+          );
         }
 
       })

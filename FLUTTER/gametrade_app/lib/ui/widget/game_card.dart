@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:videotrade_app/models/cart.dart';
 
 class GameCard extends StatelessWidget {
+  final int id;
   final String title;
   final String imageUrl;
   final double price;
 
+
   const GameCard({
     super.key,
+    required this.id,
     required this.title,
     required this.imageUrl,
     required this.price,
@@ -14,6 +19,10 @@ class GameCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<CartModel>(context);
+    final bool enCarrito = cart.items.containsKey(id);
+
+
     return Card(
       elevation: 6,
       shape: RoundedRectangleBorder(
@@ -53,7 +62,7 @@ class GameCard extends StatelessWidget {
                   const SizedBox(height: 6),
 
                   Text(
-                    '\$${price.toStringAsFixed(2)}',
+                    '\$${price % 1 == 0 ? price.toInt() : price.toStringAsFixed(2)}',
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.grey[700],
@@ -65,19 +74,29 @@ class GameCard extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
+                      onPressed: (){
+                        if (enCarrito){
+                          cart.removeItem(id);
+                        } else{
+                          cart.addItem(id, title, price, imageUrl);
+                        }
+                      },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.deepPurple,
+                        backgroundColor: 
+                        
+                            enCarrito ? Colors.redAccent.shade400 : Colors.lightBlueAccent,
+                            foregroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
+                        elevation: 3,
                         padding: const EdgeInsets.symmetric(vertical: 12),
                       ),
-                      onPressed: () {
-                        // Acción al presionar
-                      },
-                      child: const Text(
-                        'Ver más',
-                        style: TextStyle(color: Colors.white),
+                      
+                      child: Text(
+                        enCarrito ? 'Quitar del carrito' :                      'Agregar al carrito',
+                        style: const TextStyle(fontWeight: FontWeight.bold,
+    fontSize: 14,),
                       ),
                     ),
                   ),
