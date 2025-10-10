@@ -8,7 +8,7 @@ Los usuarios pueden mantener una biblioteca virtual de videojuegos que poseen y 
 
 ### Tecnologías
 
-  **Flutter** — Desarrollo móvilAndroid.
+  **Flutter** — Desarrollo móvil Android.
 
   **Laravel (PHP)** — API backend RESTful.
 
