@@ -26,20 +26,48 @@ CREATE TABLE roles(
 
 CREATE TABLE users(
     id SERIAL PRIMARY KEY,
-    email varchar(55),
+    email varchar(55) UNIQUE NOT NULL,
     name varchar(55),
     password TEXT,
-    role INT REFERENCES roles(id)
+    role INT REFERENCES roles(id),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE user_profiles(
+    id SERIAL PRIMARY KEY,
+    user_id INT UNIQUE NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    name VARCHAR(55),
+    phone VARCHAR(25),
+    avatar VARCHAR(255),           
+    address TEXT,
+    bio TEXT,
+    birthdate DATE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE sales(
     id SERIAL PRIMARY KEY,
     buyer INT NOT NULL REFERENCES users(id),
-    videogame INT NOT NULL REFERENCES videogames(id),
-    nIntercambios INT NOT NULL,
-    totalprice INT
+    totalprice INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE sales_items(
+    id SERIAL PRIMARY KEY,
+    sale_id INT NOT NULL REFERENCES sales(id),
+    videogame INT NOT NULL REFERENCES videogames(id),
+    nIntercambios INT NOT NULL,
+    totalprice INT,
+    status VARCHAR(20) NOT NULL DEFAULT 'en_biblioteca'
+);
+
+CREATE TABLE library(
+    id SERIAL PRIMARY KEY,	
+    unique_game_id INT NOT NULL REFERENCES sales_items(id),
+    owner INT NOT NULL REFERENCES users(id)
+);
 
 
 
