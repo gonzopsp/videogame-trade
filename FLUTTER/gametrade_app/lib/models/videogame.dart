@@ -3,7 +3,7 @@ class Videogame{
   final int genreID;
   final String nombre;
   final String descripcion;
-  final int precio;
+  final double precio;
   final List<String> images;
 
   Videogame({
@@ -22,12 +22,26 @@ factory Videogame.fromJson(Map<String, dynamic> json){
     images = List<Map<String, dynamic>>.from(json['images']).map((img)=> img['image_path'] as String).toList();
   }
 
+    dynamic priceJson = json['price'];
+    int priceParsed;
+
+    if (priceJson == null) {
+      priceParsed = 0; 
+    } else if (priceJson is int) {
+      priceParsed = priceJson;
+    } else if (priceJson is double) {
+      priceParsed = priceJson.toInt();
+    } else if (priceJson is String) {
+      priceParsed = int.tryParse(priceJson) ?? 0;
+    } else {
+      priceParsed = 0;
+    }
   return Videogame(
-    id: json['id'],
-    genreID: json['genreID'],
-    nombre: json['name'],
-    descripcion: json['description'],
-    precio: json['price'], 
+    id: json['id']?? 0 ,
+    genreID: json['genreID'] ?? 0,
+    nombre: json['name'] ?? '',
+    descripcion: json['description']?? '',
+    precio: priceParsed.toDouble(), 
     images: images,
     );
   }
