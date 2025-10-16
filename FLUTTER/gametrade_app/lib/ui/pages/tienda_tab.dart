@@ -67,20 +67,25 @@ class _TiendaTabState extends State<TiendaTab> {
               ],
               ),
             body: 
-              ListView.builder(
-                itemCount: videojuegos.length,
-                itemBuilder: (context, index){
-                  final juego = videojuegos[index];
-              
-                  return GameCard(
-                    id: juego.id,
-                    title: juego.nombre , 
-                    imageUrl: juego.images.first, 
-                    price: juego.precio,
-              
-                    
-                    );
-                }),
+              Column(
+                children: [
+                  Expanded(
+                    child: ListView.builder(
+                    itemCount: videojuegos.length,
+                    itemBuilder: (context, index){
+                      final juego = videojuegos[index];
+                  
+                      return GameCard(
+                        id: juego.id,
+                        title: juego.nombre , 
+                        imageUrl: juego.images.first, 
+                        price: juego.precio,
+                  
+                        
+                        );
+                    }),
+                ),]
+              ),
                 floatingActionButton: FloatingActionButton.extended(
                   backgroundColor: Colors.blueGrey.shade800,
                   foregroundColor: Colors.lightBlueAccent,

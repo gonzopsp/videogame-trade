@@ -21,4 +21,15 @@ class VideogameController extends Controller
 
         return response()->json($videogames);
     }
+
+    public function store(Request $request){
+        $validated = $request->validate([
+            'genre_id' => 'required|integer|exists:genres,id',
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string'
+        ]);
+        $videogame = Videogame::create($validated);
+        return response()->json($videogame,201);
+    }
+
 }
