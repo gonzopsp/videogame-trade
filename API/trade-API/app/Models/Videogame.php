@@ -14,4 +14,8 @@ class Videogame extends Model
         return $this->belongsTo(Genre::class);
     }
 
+    public function offer(){
+        return $this->HasOne(Oferta::class);
+    }
+
 }

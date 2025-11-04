@@ -11,6 +11,11 @@ CREATE TABLE videogames (
     price INT NOT NULL
 );
 
+CREATE TABLE offers(
+    id INT NOT NULL REFERENCES videogames(id),
+    discount INT NOT NULL
+);
+
 CREATE TABLE videogame_images(
     id SERIAL PRIMARY KEY,
     videogame_id INT NOT NULL REFERENCES videogames(id),

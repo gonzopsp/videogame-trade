@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:videotrade_app/ui/bottom_navbar.dart';
-import 'package:videotrade_app/ui/pages/tienda_tab.dart';
+import 'package:videotrade_app/ui/pages/tabs/biblioteca_tab.dart';
+import 'package:videotrade_app/ui/pages/tabs/comunidad_tab.dart';
+import 'package:videotrade_app/ui/pages/tabs/perfil_tab.dart';
+import 'package:videotrade_app/ui/pages/tabs/tienda_tab.dart';
 
 
 class MainPage extends StatefulWidget {
@@ -15,9 +18,9 @@ class _MainPageState extends State<MainPage> {
 
   final List<Widget> _pages = const [
   TiendaTab(),
-  Center(child: Text("Community")),
-  Center(child: Text("Perfil")),
-  Center(child: Text("Configuración")),
+  ComunidadTab(),
+  BibliotecaTab(),
+  PerfilTab()
   ];
 
 

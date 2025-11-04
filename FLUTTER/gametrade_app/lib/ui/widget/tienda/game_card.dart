@@ -39,6 +39,20 @@ class GameCard extends StatelessWidget {
               aspectRatio: 16 / 9,
               child: Image.network(
                 imageUrl,
+                errorBuilder:(context, error, stackTrace) {
+                    return Container(
+                      height: 200, // Ajusta según tu diseño
+                      color: Colors.grey.shade300,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.image_not_supported, size: 50, color: Colors.grey),
+                          SizedBox(height: 8),
+                          Text('Imagen no disponible', style: TextStyle(fontSize: 12)),
+                        ],
+                      ) 
+                    ) ;
+                },
                 fit: BoxFit.cover,
               ),
             ),
@@ -70,7 +84,7 @@ class GameCard extends StatelessWidget {
                   ),
 
                   const SizedBox(height: 12),
-
+                  
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
@@ -96,7 +110,7 @@ class GameCard extends StatelessWidget {
                       child: Text(
                         enCarrito ? 'Quitar del carrito' :                      'Agregar al carrito',
                         style: const TextStyle(fontWeight: FontWeight.bold,
-    fontSize: 14,),
+                        fontSize: 14,),
                       ),
                     ),
                   ),
