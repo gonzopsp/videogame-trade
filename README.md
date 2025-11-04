@@ -6,7 +6,7 @@
 
 Los usuarios pueden mantener una biblioteca virtual de videojuegos que poseen y ofrecer videojuegos para intercambio, retirándolos de su colección para facilitar el intercambio con otros usuarios.
 
-### Tecnologías
+### Tecnologías:
 
   **Flutter** — Desarrollo móvil Android.
 
@@ -14,4 +14,6 @@ Los usuarios pueden mantener una biblioteca virtual de videojuegos que poseen y 
 
   **MySQL** — Base de datos relacional para almacenar usuarios, videojuegos, transacciones e intercambios.
 
-### Funcionalidades
+  **Firebase** - Autenticacion de usuarios
+
+### Funcionalidades:
