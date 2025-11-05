@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -36,15 +33,9 @@ class DefaultFirebaseOptions {
           'you can reconfigure this by running the FlutterFire CLI again.',
         );
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for linux - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return linux;
       default:
         throw UnsupportedError(
           'DefaultFirebaseOptions are not supported for this platform.',
@@ -59,4 +50,55 @@ class DefaultFirebaseOptions {
     projectId: 'videogame-trade',
     storageBucket: 'videogame-trade.firebasestorage.app',
   );
+
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyDF_xgxDF-UuYShak1m7CUenRLGdHEw_2A',
+    appId: '1:225132114901:web:c121a2962caea4c514835c',
+    messagingSenderId: '225132114901',
+    projectId: 'videogame-trade',
+    authDomain: 'videogame-trade.firebaseapp.com',
+    storageBucket: 'videogame-trade.firebasestorage.app',
+    measurementId: 'G-H8VRLZ2CQ2',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyDF_xgxDF-UuYShak1m7CUenRLGdHEw_2A',
+    appId: '1:225132114901:web:ec1d294db474220714835c',
+    messagingSenderId: '225132114901',
+    projectId: 'videogame-trade',
+    authDomain: 'videogame-trade.firebaseapp.com',
+    storageBucket: 'videogame-trade.firebasestorage.app',
+    measurementId: 'G-DKW2DKTN27',
+  );
+
+    // Manually constructed Linux options
+
+  static const FirebaseOptions linux = FirebaseOptions(
+
+    // You can usually infer the API Key from your web or windows app's API Key if they're in the same project,
+
+    // or you can use a placeholder for now and replace it later.
+
+    apiKey: 'AIzaSyDF_xgxDF-UuYShak1m7CUenRLGdHEw_2A', // Using your web/windows API Key as a starting point
+
+    // This is a placeholder. You'll need to find the real one in Project settings after the app runs.
+
+    // The format is typically 1:project_number:linux:app_id_hash
+
+    appId: '1:225132114901:linux:YOUR_LINUX_APP_ID_HASH_HERE', // Use your project number and a placeholder
+
+    // This should be the same across all platforms in your project
+
+    messagingSenderId: '225132114901',
+
+    // Your project ID
+
+    projectId: 'videogame-trade',
+
+    // Your storage bucket URL
+
+    storageBucket: 'videogame-trade.firebasestorage.app',
+
+  );
+
 }

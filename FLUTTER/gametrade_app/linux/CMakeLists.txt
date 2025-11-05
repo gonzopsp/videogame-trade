@@ -1,6 +1,7 @@
 # Project-level configuration.
 cmake_minimum_required(VERSION 3.13)
 project(runner LANGUAGES CXX)
+include_directories("${CMAKE_CURRENT_SOURCE_DIR}")
 
 # The name of the executable created for the application. Change this to change
 # the on-disk name of your application.

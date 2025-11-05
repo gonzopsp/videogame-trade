@@ -4,7 +4,25 @@ import 'package:videotrade_app/models/cart.dart';
 import 'package:videotrade_app/providers/ofertas_provider.dart'; 
 import 'package:videotrade_app/ui/main_page.dart';
 
-void main() => runApp(
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+import 'auth_gate.dart'; 
+
+
+void main() async{
+
+  WidgetsFlutterBinding.ensureInitialized();
+
+
+  await Firebase.initializeApp(
+
+    options: DefaultFirebaseOptions.currentPlatform,
+
+  );
+
+
+
+  runApp(
   MultiProvider( 
     providers: [
       ChangeNotifierProvider(create: (context) => CartModel()),
@@ -14,6 +32,7 @@ void main() => runApp(
     child: MainApp(),
   )
 );
+}
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
@@ -42,7 +61,7 @@ class MainApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: MainPage()
+      home: const AuthGate() 
     );
   }
 }
