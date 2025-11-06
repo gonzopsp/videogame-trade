@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:videotrade_app/models/offers.dart';
+import 'package:videotrade_app/config/constants.dart';
 
 class OfertasProvider with ChangeNotifier {
-  final String apiURL = 'http://10.0.2.2:8000/api/offers';
+  
+  
+  var uri = Uri.parse('${AppConstants.apiBaseUrl}/offers');
   
   List<Oferta> _ofertas = [];
   bool _loading = false;
@@ -20,7 +23,7 @@ class OfertasProvider with ChangeNotifier {
 
     try {
 
-      final response = await http.get(Uri.parse(apiURL));   
+      final response = await http.get(uri);   
       if (response.statusCode == 200) {
         final dynamic decodedData = json.decode(response.body);     
         List<dynamic> datos;      

@@ -1,14 +1,15 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:videotrade_app/models/videogame.dart';
+import 'package:videotrade_app/config/constants.dart';
 
 class VideojuegosProvider {
-  final String apiURL = 'http://10.0.2.2:8000/api/videogames';
   
+  var uri = Uri.parse('${AppConstants.apiBaseUrl}/videogames');
   Future<List<Videogame>> fetchVideogames() async {
 
     
-    final response = await http.get(Uri.parse(apiURL));
+    final response = await http.get(uri);
 
     
     if (response.statusCode == 200) {
@@ -29,14 +30,14 @@ class VideojuegosProvider {
   
           throw Exception('Formato de respuesta desconocido');
         }   
-        print('🎮 [DEBUG] Juegos a mapear: ${datos.length}');        
+        print('[DEBUG] Juegos a mapear: ${datos.length}');        
         if (datos.isNotEmpty) {
         }
         
         return datos.map((json) => Videogame.fromJson(json)).toList();
         
       } catch (e) {
-        print('💥 [DEBUG] Error parsing JSON: $e');
+        print('[DEBUG] Error parsing JSON: $e');
         rethrow;
       }
     } else {
