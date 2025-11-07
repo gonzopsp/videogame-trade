@@ -3,24 +3,19 @@ import 'package:provider/provider.dart';
 import 'package:videotrade_app/models/cart.dart';
 import 'package:videotrade_app/providers/ofertas_provider.dart'; 
 import 'package:videotrade_app/ui/main_page.dart';
-
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_ui_auth/firebase_ui_auth.dart'; 
 import 'firebase_options.dart';
 import 'auth_gate.dart'; 
 
 
 void main() async{
-
   WidgetsFlutterBinding.ensureInitialized();
-
-
   await Firebase.initializeApp(
-
     options: DefaultFirebaseOptions.currentPlatform,
 
   );
-
-
 
   runApp(
   MultiProvider( 
@@ -52,10 +47,7 @@ class MainApp extends StatelessWidget {
 
           foregroundColor: Colors.white, 
 
-        ),
-
-        
-
+        ),   
         colorScheme: ColorScheme.dark(
 
           primary: Colors.blueGrey.shade800, 
@@ -141,7 +133,22 @@ class MainApp extends StatelessWidget {
       ),
 
       debugShowCheckedModeBanner: false,
-      home: const AuthGate() 
+      home: const AuthGate(),
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        //FirebaseUILocalizations.delegate,
+
+      ],
+      supportedLocales: const [
+
+        Locale('en'), 
+
+        Locale('es'), 
+
+      ],
+
     );
   }
 }

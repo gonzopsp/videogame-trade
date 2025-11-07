@@ -24,10 +24,8 @@ class CarritoPage extends StatelessWidget {
             )
           : ListView(
               children: cart.items.values.map((item) {
-                // Suponemos que tu CartItem ahora tiene un campo imageUrl
-                // Si no lo tiene, podrías agregarlo al hacer addItem
-                final imageUrl = item.imageUrl ?? 
-                    ''; // fallback
+               
+                final imageUrl = item.imageUrl;
 
                 return Card(
                   margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),

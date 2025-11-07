@@ -12,21 +12,20 @@ import 'package:videotrade_app/ui/widget/tienda/generos_card.dart';
 import 'package:videotrade_app/ui/widget/tienda/ofertas_card.dart';
 
 class TiendaTab extends StatefulWidget {
-  const TiendaTab({super.key});
 
+  final Future<void> Function()? onSignOut;
+  const TiendaTab({super.key, this.onSignOut}); 
   @override
   State<TiendaTab> createState() => _TiendaTabState();
 }
-
 class _TiendaTabState extends State<TiendaTab> {
   late Future<List<Videogame>> videojuegosFuture;
   VideojuegosProvider juegosProvider = VideojuegosProvider();
-  
+
   @override
   void initState(){
     super.initState();
     videojuegosFuture = juegosProvider.fetchVideogames();
-
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Provider.of<OfertasProvider>(context, listen: false).cargarOfertas();
     });
@@ -35,30 +34,49 @@ class _TiendaTabState extends State<TiendaTab> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Videogame>>(
-      future: videojuegosFuture, 
+      future: videojuegosFuture,
       builder: (context, snapshot){
         if (snapshot.connectionState == ConnectionState.waiting){
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         } else if (snapshot.hasError) {
           return Center(child: Text('Error: ${snapshot.error}'));
         } else if (!snapshot.hasData || snapshot.data!.isEmpty){
-          return Center(child: Text('No hay videojuegos disponibles'));
+          return const Center(child: Text('No hay videojuegos disponibles'));
         } else{
           final videojuegos = snapshot.data!;
           return Scaffold(
             appBar: AppBar(
-              leading: Icon(Icons.account_circle),
-              title: Text('TIENDA BKN'),
+              leading: const Icon(Icons.account_circle), 
+              title: const Text('TIENDA BKN'),
               actions: [
                 Row(
                   children: [
-                    Icon(Icons.notifications_none_outlined),
-                    SizedBox(width: 10),
-                    Icon(Icons.settings)
+                    const Icon(Icons.notifications_none_outlined),
+                    const SizedBox(width: 10),
+                    PopupMenuButton<String>(
+                      onSelected: (value) {
+                        if (value == 'signOut') {
+                          widget.onSignOut?.call();
+                        }
+                      },
+                      itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+                        const PopupMenuItem<String>(
+                          value: 'signOut',
+                          child: Text('Cerrar Sesión'),
+                        ),
+                      ],
+                      icon: const Icon(Icons.settings),
+                    ),
+                    const SizedBox(width: 10), 
+
                   ],
+
                 ),
+
               ],
+
             ),
+
             body: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -78,7 +96,7 @@ class _TiendaTabState extends State<TiendaTab> {
                   ),
                 ),
                 GenerosCard(),
-
+ /*
                 Padding(
                       padding: EdgeInsets.all(5),
                       child: Row(
@@ -94,7 +112,7 @@ class _TiendaTabState extends State<TiendaTab> {
                         ],
                       ),
                     ),
-                    
+                   
                     Consumer<OfertasProvider>(
                       builder: (context, ofertasProvider, child) {
                         if (ofertasProvider.loading) {
@@ -147,6 +165,7 @@ class _TiendaTabState extends State<TiendaTab> {
                         );
                       },
                     ),
+                    */
                 Padding(
                   padding: const EdgeInsets.all(5),
                   child: Row(
@@ -172,6 +191,7 @@ class _TiendaTabState extends State<TiendaTab> {
                         id: juego.id,
                         title: juego.nombre, 
                         imageUrl: juego.images.first, 
+                        description: juego.descripcion,
                         price: juego.precio,
                       );
                     },

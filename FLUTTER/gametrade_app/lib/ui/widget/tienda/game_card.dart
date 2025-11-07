@@ -6,6 +6,7 @@ class GameCard extends StatelessWidget {
   final int id;
   final String title;
   final String imageUrl;
+  final String description;
   final double price;
 
 
@@ -14,6 +15,7 @@ class GameCard extends StatelessWidget {
     required this.id,
     required this.title,
     required this.imageUrl,
+    required this.description,
     required this.price,
   });
 
@@ -72,7 +74,15 @@ class GameCard extends StatelessWidget {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-
+                  Text(
+                    description,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                   const SizedBox(height: 6),
 
                   Text(
